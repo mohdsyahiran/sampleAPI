@@ -37,8 +37,8 @@
     </div>
 
     <script>
-        function getResponse(flag) {
-            fetch(`api.php?flag=${flag}`)
+        function getResponse(response) {
+            fetch(`api.php?response=${response}`)
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('response').innerText = data.message;
