@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Reactivation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            display: inline-block;
+            text-align: left;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        #response {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Account Reactivation</h1>
+        <button onclick="getResponse('true')">Reactivate Account</button>
+        <button onclick="getResponse('false')">Deactivate Account</button>
+        <div id="response"></div>
+    </div>
+
+    <script>
+        function getResponse(flag) {
+            fetch(`api.php?flag=${flag}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('response').innerText = data.message;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
